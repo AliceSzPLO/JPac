@@ -13,21 +13,31 @@ public class CasualUI extends JPanel {
 
     JLabel backgroundLabel;
 
+    JPanel bottomPanel = new JPanel();
+
+    JPanel topPanel = new JPanel();
+
+    BorderLayout layout = new BorderLayout();
+
+
     public CasualUI() {
 
-        buttonPanel.setLayout(new BoxLayout(buttonPanel,BoxLayout.X_AXIS));
+        buttonPanel.setLayout(new BoxLayout(buttonPanel,BoxLayout.Y_AXIS));
         buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         GridBagConstraints GridConstraints = new GridBagConstraints();
         GridConstraints.fill = GridConstraints.HORIZONTAL;
         GridConstraints.gridy = 0;  // set the row to 1
         GridConstraints.weighty = 1.0;  // allocate extra vertical space to second row
-        this.setLayout(new BorderLayout());
+        layout.setVgap(140);
+        this.setLayout(layout);
 
         ImageIcon defaultIcon = new ImageIcon("");
         backgroundLabel = new JLabel(defaultIcon);
         ImagePanel.add(backgroundLabel);
 
+        add(bottomPanel,BorderLayout.PAGE_END);
+        add(topPanel,BorderLayout.PAGE_START);
         add(ImagePanel,BorderLayout.CENTER);
 
     }
@@ -59,7 +69,7 @@ public class CasualUI extends JPanel {
                 this.revalidate();
             }
         }
-        this.add(buttonPanel, BorderLayout.SOUTH);
+        this.add(buttonPanel, BorderLayout.LINE_START);
 
     }
 

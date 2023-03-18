@@ -73,8 +73,7 @@ public class PacManUI extends JFrame implements ActionListener  {
     JButton GbackBTN = new JButton("Back");
 
     JButton[] MapBTN = new JButton[5];
-    JButton MapB = new JButton("Map 1");
-    List<String> allMap = Arrays.asList("Map1","Map2","Map3","Map4","Map5");
+
 
 
     private ButtonPanel buttonPanel;
@@ -138,8 +137,10 @@ public class PacManUI extends JFrame implements ActionListener  {
             MapBTN[i] = new JButton();
             int a = i+1;
             MapBTN[i].setText("Map "+a);
+            MapBTN[i].addActionListener(this);
             CasualUI.addButton(MapBTN[i]);
         }
+
 
         add(cardPanel);
         cardPanel.add(MainUI,"Mainmenu");
@@ -228,6 +229,7 @@ public class PacManUI extends JFrame implements ActionListener  {
         boardPanel.repaint();
         scorePanel.refresh();
         scorePanel.reMap();
+
     }
 
     //Button Action
@@ -237,6 +239,8 @@ public class PacManUI extends JFrame implements ActionListener  {
             cardLayout.show(cardPanel,"Gamemode_Select");
         }else if(e.getSource()== casualBTN){
             cardLayout.show(cardPanel,"Casual");
+        }else if(e.getSource()==MapBTN[0]){
+            cardLayout.show(cardPanel,"Game");
         }
     }
 }
