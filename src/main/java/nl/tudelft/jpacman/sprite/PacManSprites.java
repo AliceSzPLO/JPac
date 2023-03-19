@@ -7,6 +7,8 @@ import java.util.Map;
 import nl.tudelft.jpacman.PacmanConfigurationException;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.npc.ghost.GhostColor;
+import java.util.concurrent.ThreadLocalRandom;
+
 
 /**
  * Sprite Store containing the classic Pac-Man sprites.
@@ -55,7 +57,19 @@ public class PacManSprites extends SpriteStore {
      * @return A map of animated Pac-Man sprites for all directions.
      */
     public Map<Direction, Sprite> getPacmanSprites() {
-        return directionSprite("/sprite/pacman.png", PACMAN_ANIMATION_FRAMES);
+
+        String Rand = randomStringFromArr();
+        System.out.println("aaaaaaaaaaaa  "+Rand);
+        if (Rand=="A"){return directionSprite("/sprite/pacman.png", PACMAN_ANIMATION_FRAMES);}
+        else {return directionSprite("/sprite/pacman1.png", PACMAN_ANIMATION_FRAMES);}
+    }
+
+
+    public static String randomStringFromArr() {
+        String[] arr = {"A", "B"};
+        int randIdx = ThreadLocalRandom.current().nextInt(arr.length);
+        String randomElem = arr[randIdx];
+        return randomElem;
     }
 
     /**
